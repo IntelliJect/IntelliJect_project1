@@ -1,40 +1,45 @@
-IntelliJect
+## 🎯IntelliJect
+
+
+![db_comp](https://github.com/user-attachments/assets/f4661c0f-b1fa-4d3f-8dfb-032cdac518a4)
 
 AI-powered exam-oriented study assistant using RAG, embeddings, and semantic search
 
---- IntelliJect is an AI-powered study assistant that enriches student notes with contextually relevant Previous Year Questions (PYQs). It helps students study in an exam-oriented manner by automatically mapping their notes to syllabus-aligned PYQs using embeddings, semantic search, and a Retrieval-Augmented Generation (RAG) pipeline.
+## IntelliJect is an AI-powered study assistant that enriches student notes with contextually relevant Previous Year Questions (PYQs). It helps students study in an exam-oriented manner by automatically mapping their notes to syllabus-aligned PYQs using embeddings, semantic search, and a Retrieval-Augmented Generation (RAG) pipeline.
 
---- Key Features
-1. Notes Matcher (RAG-based)
-  Upload PDF notes
-  Automatically extract and chunk content
-  Semantically match each chunk with relevant PYQs
-  Highlight exact answer lines directly from notes
-  Display matched PYQs alongside notes for contextual learning
- 🎥Demo
-   ![Untitled video - Made with Clipchamp](https://github.com/user-attachments/assets/7041b618-94f8-47ce-bc0f-87596e99cbfa)
-3. Smart Database Builder
-  Upload scanned or digital question papers
-  OCR-based text extraction with preprocessing
-  LLM-powered parsing to structure questions with metadata
-  Deduplication using question hashing
-  Manual review and edit before database insertion
-  🎥Demo
-  ![db_comp](https://github.com/user-attachments/assets/23283899-abbb-43a4-9905-cba62062e32e)
-5. Contextual PYQ Search Engine
-  Filter PYQs by subject, college, branch, semester, unit, marks, frequency
-  Semantic search using vector embeddings (FAISS)
-  Difficulty-based and frequency-based question recommendations
-  🎥Demo
-  ![search](https://github.com/user-attachments/assets/5f4bb5cc-29e5-477b-b3d8-4821bfc875c6)
-7. AI Study Planner
-  Generates a day-wise study plan based on PYQ frequency
-  Prioritizes high-weightage topics
-  Estimates daily workload and time
-  🎥Demo
-  ![study planner](https://github.com/user-attachments/assets/c2f0b271-f10c-4eaa-9f89-0e6749bd3dbc)
+## Key Features
 
---- System Architecture (High-Level)
+  1. Notes Matcher (RAG-based)
+    Upload PDF notes
+    Automatically extract and chunk content
+    Semantically match each chunk with relevant PYQs
+    Highlight exact answer lines directly from notes
+    Display matched PYQs alongside notes for contextual learning     🎥Demo
+     ![Untitled video - Made with Clipchamp](https://github.com/user-attachments/assets/7041b618-94f8-47ce-bc0f-87596e99cbfa)
+     
+  2.Smart Database Builder
+    Upload scanned or digital question papers
+    OCR-based text extraction with preprocessing
+    LLM-powered parsing to structure questions with metadata
+    Deduplication using question hashing
+    Manual review and edit before database insertion   🎥Demo
+    ![db_comp](https://github.com/user-attachments/assets/23283899-abbb-43a4-9905-cba62062e32e)
+    
+  3. Contextual PYQ Search Engine
+    Filter PYQs by subject, college, branch, semester, unit, marks, frequency
+    Semantic search using vector embeddings (FAISS)
+    Difficulty-based and frequency-based question recommendations 🎥Demo
+    ![search](https://github.com/user-attachments/assets/5f4bb5cc-29e5-477b-b3d8-4821bfc875c6)
+
+  4. AI Study Planner
+    Generates a day-wise study plan based on PYQ frequency
+    Prioritizes high-weightage topics
+    Estimates daily workload and time  🎥Demo
+
+ ![study planner](https://github.com/user-attachments/assets/c2f0b271-f10c-4eaa-9f89-0e6749bd3dbc)
+
+## System Architecture (High-Level)
+
     Frontend: Streamlit (multi-tab interactive UI)
     Backend Logic:
     Python
@@ -50,7 +55,8 @@ AI-powered exam-oriented study assistant using RAG, embeddings, and semantic sea
     AWS EC2 for application hosting
     AWS RDS for persistent storage
 
---- Tech Stack
+## Tech Stack
+
     Layer : Technologies
     Frontend : Streamlit
     Backend : Python, LangChain
@@ -61,16 +67,17 @@ AI-powered exam-oriented study assistant using RAG, embeddings, and semantic sea
     Auth : Supabase
     Cloud : AWS EC2
     
-  Language: Python
-  Frontend: Streamlit
-  LLM & Embeddings: OpenAI (via LangChain)
-  Vector Store: FAISS
-  OCR: PyMuPDF, OpenCV, Tesseract (pytesseract)
-  Database: PostgreSQL (SQLAlchemy ORM)
-  Authentication: Supabase
-  Cloud: AWS EC2, AWS RDS
+    Language: Python
+    Frontend: Streamlit
+    LLM & Embeddings: OpenAI (via LangChain)
+    Vector Store: FAISS
+    OCR: PyMuPDF, OpenCV, Tesseract (pytesseract)
+    Database: PostgreSQL (SQLAlchemy ORM)
+    Authentication: Supabase
+    Cloud: AWS EC2, AWS RDS
 
---- How IntelliJect Works (Notes Matcher Flow)
+## How IntelliJect Works (Notes Matcher Flow)
+
         A[Upload Notes PDF] --> B[Text Extraction / OCR]
         B --> C[Sentence Chunking]
         C --> D[OpenAI Embeddings]
@@ -78,6 +85,7 @@ AI-powered exam-oriented study assistant using RAG, embeddings, and semantic sea
         E --> F[Relevant PYQs]
         F --> G[Answer Extraction via LLM]
         G --> H[Highlighted Answers in UI]
+        
     1.User uploads a PDF of notes
     2.Text is extracted (OCR fallback for scanned PDFs)
     3.Notes are chunked into semantically meaningful units
@@ -87,11 +95,12 @@ AI-powered exam-oriented study assistant using RAG, embeddings, and semantic sea
     7.An LLM extracts exact answer sentences from the notes
     8.Results are displayed with highlighted answers
     
----Database Design (Core Table: PYQ)
+## Database Design (Core Table: PYQ)
     Each PYQ record contains: - Question text - Subject, unit, sub-topic - Branch, college, course - Year, semester, marks - Frequency (number of times asked) - Hash for        deduplication - Verification status
     Indexes are added on frequently queried fields (subject, unit, branch, frequency) for performance.
 
----Security & Configuration
+## Security & Configuration
+
     >> All secrets managed via environment variables:
     OPENAI_API_KEY
     DATABASE_URL
@@ -102,14 +111,17 @@ AI-powered exam-oriented study assistant using RAG, embeddings, and semantic sea
     >> Database access via SQLAlchemy ORM (prevents SQL injection)
     >> Designed for deployment behind HTTPS in production
 
---- Deployment Overview
+## Deployment Overview
+
+
     >> PostgreSQL database deployed on AWS RDS
     >> Application hosted on AWS EC2
     >> Environment variables configured on server
     >> Database populated via JSON migration and Smart DB Builder
     >> Streamlit app served to users
     
---- Scalability Considerations
+  ## Scalability Considerations
+  
     >> Connection pooling for database access
     >> Metadata filtering before semantic search to reduce vector load
     >> Future-ready for:
@@ -117,37 +129,29 @@ AI-powered exam-oriented study assistant using RAG, embeddings, and semantic sea
         Caching frequent queries
         Horizontal scaling with containers
 
---- Use Cases
+## Use Cases
+
     >> Students preparing for university exams
     >> Exam-oriented revision using PYQs
     >> Identifying high-frequency and high-weightage topics
     >> Structured study planning
 
---- Future Enhancements
+## Future Enhancements
+
     >> Handwritten notes OCR support
     >> Weak-topic detection based on study patterns
     >> Multi-domain expansion (medical, CA, banking exams)
     >> Analytics dashboard for student performance
 
---- contributors
---- License
+## Contributors
+    Both– Backend architecture, RAG pipeline, embeddings, FAISS integration, database design
+    Aqsa Laraib – AWS deployment, Frontend 
+    Dishaa Mehra – Database design
+
+## License
+
     This project is currently for academic and research purposes. Licensing can be updated as the project evolves.
 
 IntelliJect — Study smarter. Study exam-oriented.
 
-
-
-
-
-
-
-
-
-
-
-search engine![search](https://github.com/user-attachments/assets/5f4bb5cc-29e5-477b-b3d8-4821bfc875c6)
-
-study planner ![study planner](https://github.com/user-attachments/assets/c2f0b271-f10c-4eaa-9f89-0e6749bd3dbc)
-smart database builder ![db_comp](https://github.com/user-attachments/assets/23283899-abbb-43a4-9905-cba62062e32e)
-intro ![db_comp](https://github.com/user-attachments/assets/f4661c0f-b1fa-4d3f-8dfb-032cdac518a4)
 
